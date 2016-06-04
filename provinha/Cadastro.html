@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Provinha Brasil</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="en" />
+        <script language="JavaScript1.2" type="text/javascript" src="js/ajax.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/objeto.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/select.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/testar.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/cadastro.js">
+        </script>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <style>
+            #cmb_aluno {
+                width: 28em;
+            } #lst_aluno {
+                width: 28em;
+            }
+        </style>
+    </head>
+    <body onload="iniciar()">
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+            </div>
+            <div id="menu">
+                <ul>
+                   <li><a href="inicial.html">Início</a></li>
+                  <li><a href="grafico.html">Gerar Gráfico</a></li>
+                  <li><a href="Relatorio_nivel.html">Relatório Nível</a></li>
+                  <li><a href="Relatorio_classe.html">Relatório Classe </a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="middle">
+            <div id="sidebar">
+                <h3>MENU</h3>
+                <ul>
+                    <li class="firstli">
+                        <a href="Cadastro.html"><span class="style2">Cadastro </span></a>
+                    </li>
+                    <li>
+                        <a href="Consulta.html">Consulta</a>
+                    </li>
+                    <li>
+                        <a href="Relatorio_nivel.html">Relatório Nível</a>
+                    </li>
+                    <li>
+                        <a href="Relatorio_classe.html">Relatório Classe </a>
+                    </li>
+                    <li>
+                        <a href="mudar_senha.html">Alterar Senha</a>
+                    </li>
+                    <li>
+                        <a href="anexo.html">Anexo</a>
+                    </li>
+                    <li>
+                        <a href="Ajuda.html">Ajuda</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Sair</a>
+                    </li>
+                </ul>
+                <h3>&nbsp;</h3>
+            </div>
+            <div id="right">
+                <div class="post">
+                    <div class="post_content">
+                        <form id="form1" name="form1" method="post" action="">
+                        <h3><span class="style2">Cadastro</span></h3>
+                        <p>&nbsp;
+                            
+                        </p>
+                        <table width="560" border="0">
+                            <tr>
+                                <td width="183" height="54">
+                                    Escola: 
+                                    <br/>
+                                    <input name="txt_escola" type="text" id="txt_escola" tabindex="1" size="57" readonly="yes" />
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="560" border="0">
+                            <tr>
+                                <td width="138" height="54">
+                                    Ano:
+                                    <br/>
+                                    <select name="cmb_serie" id="cmb_serie" onchange="cmb_serie_onchange()">
+                                    </select>
+                                </td>
+                                <td width="52">
+                                    Turma:
+                                    <br/>
+                                    <select name="cmb_turma" id="cmb_turma" onchange="cmb_turma_onchange()">
+                                    </select>
+                                </td>
+                                <td width="356">
+                                    Período:
+                                    <br/>
+                                    <input name="txt_periodo" type="text" id="txt_periodo" tabindex="1" size="15" readonly="yes" />
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="560" height="68" border="0">
+                            <tr>
+                                <td width="126" height="64">
+                                    Alunos:
+                                    <br/>
+                                    <select name="cmb_aluno" id="cmb_aluno" onchange="cmb_aluno_onchange()">
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <h3>Questões</h3>
+                        <p>
+                            <br/>
+                        </p>
+                        <br/>
+                        <br/>
+                        <table width="560" border="0" align="center" cellspacing="2">
+                            <tr>
+                                <td width="142" height="51">
+                                    <div align="center">
+                                        1-
+                                        <select name="cmb_q1" id="cmb_q1" onchange="resposta(1)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td width="142">
+                                    <div align="center">
+                                        7-
+                                        <select name="cmb_q7" id="cmb_q7" onchange="resposta(7)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td width="142">
+                                    <div align="center">
+                                        13-
+                                        <select name="cmb_q13" id="cmb_q13" onchange="resposta(13)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td width="142">
+                                    <div align="center">
+                                        19-
+                                        <select name="cmb_q19" id="cmb_q19" onchange="resposta(19)">
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="53" bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        2-
+                                        <select name="cmb_q2" id="cmb_q2" onchange="resposta(2)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        8-
+                                        <select name="cmb_q8" id="cmb_q8" onchange="resposta(8)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        14-
+                                        <select name="cmb_q14" id="cmb_q14" onchange="resposta(14)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        20-
+                                        <select name="cmb_q20" id="cmb_q20" onchange="resposta(20)">
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="53">
+                                    <div align="center">
+                                        3-
+                                        <select name="cmb_q3" id="cmb_q3" onchange="resposta(3)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        9-
+                                        <select name="cmb_q9" id="cmb_q9" onchange="resposta(9)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        15-
+                                        <select name="cmb_q15" id="cmb_q15" onchange="resposta(15)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        21-
+                                        <select name="cmb_q21" id="cmb_q21" onchange="resposta(21)">
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="56" bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        4-
+                                        <select name="cmb_q4" id="cmb_q4" onchange="resposta(4)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        10-
+                                        <select name="cmb_q10" id="cmb_q10" onchange="resposta(10)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        16-
+                                        <select name="cmb_q16" id="cmb_q16" onchange="resposta(16)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        22-
+                                        <select name="cmb_q22" id="cmb_q22" onchange="resposta(22)">
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="52">
+                                    <div align="center">
+                                        5-
+                                        <select name="cmb_q5" id="cmb_q5" onchange="resposta(5)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        11-
+                                        <select name="cmb_q11" id="cmb_q11" onchange="resposta(11)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        17-
+                                        <select name="cmb_q17" id="cmb_q17" onchange="resposta(17)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        23-
+                                        <select name="cmb_q23" id="cmb_q23" onchange="resposta(23)">
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="61" bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        6-
+                                        <select name="cmb_q6" id="cmb_q6" onchange="resposta(6)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        12-
+                                        <select name="cmb_q12" id="cmb_q12" onchange="resposta(12)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        18-
+                                        <select name="cmb_q18" id="cmb_q18" onchange="resposta(18)">
+                                        </select>
+                                    </div>
+                                </td>
+                                <td bgcolor="#D2F4FF">
+                                    <div align="center">
+                                        24-
+                                        <select name="cmb_q24" id="cmb_q24" onchange="resposta(24)">
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table width="560" border="0">
+                            <tr>
+                                <td width="140">
+                                    Status:
+                                    <br/>
+                                    <select name="cmb_status" id="cmb_status" onchange="cmb_status_onchange()">
+                                        <option>1234567891234</option>
+                                    </select>
+                                </td>
+                                <td width="410">
+                                    Acertos:
+                                    <br/>
+                                    <input name="txt_nota" type="text" id="txt_nota" tabindex="1" size="15" readonly="yes"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table width="560" height="35" border="0">
+                            <tr>
+                                <td height="31">
+                                    <h3>Alunos Cadastrados</h3>
+                                    <p>
+                                        <br/>
+                                    </p>
+                                    <br/>
+                                    <select name="lst_aluno" size="5" multiple="multiple" id="lst_aluno">
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <input name="btn_salvar" id="btn_salvar" class="button" type="button" value="Salvar" tabindex="5" onclick="btn_salvar_onclick()"/>
+                        <br/>
+                        <br/>
+                        </p>
+                        <br/>
+                    </form>
+                </div>
+            </div>
+            <div class="post">
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer2">
+            <p>
+                Prefeitura de Guarulhos - Secretaria de Educação
+            </p>
+        </div>
+    </div>
+    </div>
+    <div style="text-align: center; font-size: 0.75em;">
+    </div>
+    </>
+</html>

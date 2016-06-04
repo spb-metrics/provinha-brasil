@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Provinha Brasil</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="en" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <style type="text/css">
+            <!--
+
+            #senha { width:700px;
+                     height:inherit;
+                     margin: 0 auto;
+
+            }
+
+            #caixa { width: 400px;
+                     margin-right: 0 auto;
+
+            }
+
+            h3 {
+                float: left;
+                padding-left: 20px;
+                width: 350px;
+                font-size: 24px;
+                line-height: 30px;
+                text-transform: inherit;
+                color: #147E9D;
+                background: url(../images/h3.gif) no-repeat;
+            }
+            -->
+        </style>
+        <script type="text/javascript">
+            <!--
+            function MM_jumpMenu(targ,selObj,restore){ //v3.0
+                eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+                if (restore) selObj.selectedIndex=0;
+            }
+            //-->
+        </script>
+        <script language="javascript" charset="UTF-8" src="js/gabarito.js" type="text/javascript"> </script>
+        <script language="javascript" charset="UTF-8" src="js/ajax.js" type="text/javascript"> </script>
+        <script language="javascript" charset="UTF-8" src="js/objeto.js" type="text/javascript"> </script>
+        <script language="javascript" charset="UTF-8" src="js/select.js" type="text/javascript"> </script>
+    </head>
+
+    <body onload="iniciar()">
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li><a href="inicial.html">Início</a></li>
+						<li><a href="grafico.html">Gerar Gráfico</a></li>
+						<li><a href="Relatorio_nivel.html">Relatório Nível</a></li>
+						<li><a href="Relatorio_classe.html">Relatório Classe </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="middle">
+                <div id="senha">
+                    <table width="100%" border="0">
+                        <tr>
+                            <td>
+                                <form id="frmGabaritoPdf" name="frmGabaritoPdf" method="post" action="php/fichaCorrecao_PDF.php">
+                                    <h3>Gabarito</h3>
+                                    <br />
+                                    <br />
+                                    <table width="100%" border="0">
+                                        <tr>
+                                        <!-- ((((((((((((((((((((((( ESCOLA ))))))))))))))))))))))))-->
+                                        <td width="20%" colspan="3">Escola:<br />
+                                            <input type="text" name="txtEscola" id="txtEscola" size="60%" maxlength="20"readonly="readonly"/>
+                                            </td>
+
+                                        <!-- ((((((((((((((((((((((( ANO ))))))))))))))))))))))))-->
+                                            <td width="10%" height="54">Ano:<br />
+                                                <select name="cboAno" id="cboAno" style="width: 95%" onchange="PesquisarFase(this,'cboFase', this.value)">
+                                                    <option selected="selected">
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        <!-- ((((((((((((((((((((((( FASE ))))))))))))))))))))))))-->
+                                            <td width="15%">Fase<br />
+                                                <select name="cboFase" id="cboFase" style="width: 95%" onchange="PesquisarSerie(this,'cboSerie')">
+                                                    <option selected="selected"> </option>
+                                                </select>
+                                            </td>                                        
+                                        </tr>
+                                        <tr>
+                                            <!-- ((((((((((((((((((((((( SÉRIE ))))))))))))))))))))))))-->
+                                            <td width="10%">Série:<br />
+                                                <select name="cboSerie" id="cboSerie" style="width: 95%" onchange="PesquisarTurma(this,'cboTurma',this.value)">
+                                                    <option selected="selected"> </option>
+                                                </select>
+                                                <br />
+                                            </td>
+                                            <!-- ((((((((((((((((((((((( TURMA ))))))))))))))))))))))))-->
+                                            <td width="10%">Turma:<br />
+                                                <select name="cboTurma" id="cboTurma" style="width: 95%" onchange="PesquisarPeriodo(this,'txtPeriodo',this.value)">
+                                                    <option selected="selected">
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <!-- ((((((((((((((((((((((( PERÍODO ))))))))))))))))))))))))-->                                            
+                                            <td width="20%">Período:<br />
+                                                <input type="text" name="txtPeriodo" id="txtPeriodo" size="15" maxlength="20" readonly="readonly"/>
+                                            </td>
+                                            <!-- ((((((((((((((((((((((( BOTÃO GERAR ))))))))))))))))))))))))-->
+                                            <td width="10%" colspan="2">
+                                                <br />
+                                                <input type="hidden" name="txtSerie" id="txtSerie"/>
+                                                <input type="hidden" name="txtTurma" id="txtTurma"/>
+                                                <input type="hidden" name="funcao" id="funcao"/>
+                                                <input name="btnGerarPdf" id="btnGerarPdf" class="button" type="button" value="Gerar" style="width: 60%"onclick="gerarGabatiroPdf()" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                        <br />
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="footer">
+                <div id="footer2">
+                    <p>Prefeitura de Guarulhos - Secretaria de Educação</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; font-size: 0.75em;"></div>
+    </body>
+</html>

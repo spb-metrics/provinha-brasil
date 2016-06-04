@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Provinha Brasil</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="en" />
+        <script language="JavaScript1.2" type="text/javascript" src="js/ajax.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/objeto.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/select.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/testar.js">
+        </script>
+        <script language="JavaScript1.2" type="text/javascript" src="js/nivel_aluno.js">
+        </script>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <style type="text/css">
+        <!-- #cmb_aluno {
+            width: 28em;
+        } #senha {
+            width: 700px;
+            height: inherit;
+            margin: 0 auto;
+        }#lbl_doep {
+            text-align:right;
+        } 
+		#caixa {
+            width: 400px;
+            margin-right: 0 auto;
+        }.style4 {
+            color: #666666
+        }
+        -->
+        </style>
+    </head>
+    <body onload="iniciar()">
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+                </div>
+                <div id="menu">
+                    <ul>
+                         <li><a href="inicial.html">Início</a></li>
+						<li><a href="grafico.html">Gerar Gráfico</a></li>
+						<li><a href="Relatorio_nivel.html">Relatório Nível</a></li>
+						<li><a href="Relatorio_classe.html">Relatório Classe </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="middle">
+                <div id="senha">
+                    <table width="700" border="0">
+                        <tr>
+                            <td>
+                                <form id="form1" name="form1" method="post" action="">
+                                    <h3>Relatório Qualitativo: Provinha Brasil</h3>
+                                    <br/>
+                                    <table width="560" border="0">
+                                        <tr>
+                                            <td width="183" height="54">
+                                                Escola: 
+                                                <br/>
+                                                <input name="txt_escola" type="text" id="txt_escola" tabindex="1" size="57" readonly="yes" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table width="560" border="0">
+                                        <tr>
+                                            <td width="138" height="54">
+                                                Ano:
+                                                <br/>
+                                                <select name="cmb_serie" id="cmb_serie" onchange="cmb_serie_onchange()">
+                                                </select>
+                                            </td>
+                                            <td width="58">
+                                                Turma:
+                                                <br/>
+                                                <select name="cmb_turma" id="cmb_turma" onchange="cmb_turma_onchange()">
+                                                </select>
+                                            </td>
+                                            <td width="352">
+                                                Período:
+                                                <br/>
+                                                <input name="txt_periodo" type="text" id="txt_periodo" tabindex="1" size="15" readonly="yes" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table width="560" border="0">
+                                        <tr>
+                                            <td>
+                                                Nome do aluno:
+                                                <br/>
+                                                <select name="cmb_aluno" id="cmb_aluno" onchange="cmb_aluno_onchange()">
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p>&nbsp;
+                                        
+                                    </p>
+                                    <p>
+                                        <span class="style4">
+                                            <br/>
+                                            A Secretaria Municipal de Educação, por meio do DOEP, tem por objetivo conhecer melhor o processo de Alfabetização/Letramento dos educandos, durante o Ciclo I, na Educação Fundamental. Neste sentido, Guarulhos realiza em parceria com o Governo Federal, a Avaliação Provinha Brasil. 
+                                            <br/>
+                                            <br/>
+                                            A Provinha Brasil é uma avaliação diagnóstica, dos educandos que estão no início de escolarização (2° e 3° anos). É constituída por níveis de 1 a 5 (estes níveis procuram indicar quais habilidades, referentes à apropriação do sistema de escrita e leitura, o aluno possui). Os resultados são evidenciados a partir do número de acertos correspondentes a estes níveis. Para a escola, Gestores e educadores é instrumento que possibilita exercitar o avaliar para replanejar as práticas pedagógicas, tendo em vista a aprendizagem de todas as crianças. E para Secretaria Municipal de Educação os resultados também poderão orientar a definição de Políticas Publicas como, por exemplo, a formação de professores. Sendo assim, após a realização do Teste 2/2009, estamos propondo relatório diagnóstico dos alunos que estiverem nos níveis de 1 a 3, ou seja, que ainda não possuem o domínio da leitura e da escrita. Para tanto propomos um levantamento de dados que evidenciem o processo de aprendizagem dessas crianças.lhar os Itens assinalados:
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <div id="lbl_doep">
+                                                Atenciosamente,Equipe DOEP
+                                            </div>
+                                        </span>
+                                        <br/>
+                                        <br/>
+                                    </p>
+                                    <table width="700" border="0">
+                                        <tr>
+                                            <td>
+                                            Nível Provinha Brasil
+                                            <br/>
+                                            <label type="text" name="txt_nivel" id= "txt_nivel">
+                                            </label>
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <table width="700" border="0">
+                                        <tr>
+                                            <td>
+                                                Nível pela Avaliação do Professor
+                                                <br/>
+                                                <select name="cmb_nivel" id="cmb_nivel">
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <div id="caixa">
+                                        Se em sua classe houver diferença entre o nível apontado pela Provinha Brasil e o nível apontado por sua avaliação, justifique quais fatores/aspectos podem ter influenciado o desempenho do educando na Provinha Brasil.
+                                    </div>
+                                    <br>
+                                    <table width="700" border="0">
+                                        <tr>
+                                            <td>
+                                                <label>
+                                                    <textarea name="txt_texto" id="txt_texto" cols="45" rows="5" onkeydown="limite('txt_inter5',249)">
+                                                    </textarea>
+                                                    <br/>
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p>
+                                    </p>
+                                    <br/>
+                                    <input class="" type="button" value="Salvar" tabindex="5" id="btn_salvar" name="btn_salvar" onclick="btn_salvar_onclick()"/>
+                                    <br/>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="footer">
+                <div id="footer2">
+                    <p>
+                        Prefeitura de Guarulhos - Secretaria de Educação
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; font-size: 0.75em;">
+        </div>
+    </body>
+</html>

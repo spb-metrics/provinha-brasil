@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Provinha Brasil</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="language" content="en" />
+		<script language="JavaScript1.2" type="text/javascript" src="js/ajax.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/select.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/objeto.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/testar.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/nivel_classe.js"></script>
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+		<style type="text/css">
+			
+			#caixa {
+			    margin: 0 auto;
+			    padding: 20px;
+			} #caixa p {
+			    border-bottom: 1px solid #ECE5DD;
+			    padding: 12px 0 5px 0;
+			    margin: 0;
+			    color: #000000;
+			}
+			
+			td {
+			    font-family: Geneva, Arial, Helvetica, sans-serif;
+			    color: #000000;
+			    font-size: 14px;
+			} .style1 {
+			    font-size: 14px
+			} .style3 {
+			    font-size: 16px;
+			    color: #333333;
+			}
+			-->
+		</style>
+	</head>
+	<body onload="iniciar()">
+		<div id="main">
+			<div id="header">
+				<div id="logo"></div>
+				<div id="menu">
+					<ul>
+						 <li><a href="inicial.html">Início</a></li>
+						<li><a href="grafico.html">Gerar Gráfico</a></li>
+						<li><a href="Relatorio_nivel.html">Relatório Nível</a></li>
+						<li><a href="Relatorio_classe.html">Relatório Classe </a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="middle">
+				<div id="rotulo">
+					<h3>Relatório Qualitativo: Provinha Brasil</h3>
+				  <br/>
+				</div>
+				<div id="inicio">
+					<table width="560" border="0">
+						<tr>
+							<td width="183" height="73">
+								<span class="style5">Escola: </span>
+								<br/>
+								<input name="txt_escola" type="text" id="txt_escola" tabindex="1" size="57" readonly="yes" />
+							</td>
+						</tr>
+					</table>
+					<table width="560" border="0">
+						<tr>
+							<td width="80" height="72">
+								<span class="style5">Ano:</span>
+								<br/>
+								<select name="cmb_serie" id="cmb_serie" onchange="cmb_serie_onchange()"></select>
+							</td>
+							<td width="95">
+								<span class="style5">Turma: </span>
+								<br/>
+								<select name="cmb_turma" id="cmb_turma" onchange="cmb_turma_onchange()"></select>
+							</td>
+							<td width="371">
+								<span class="style5">Período: </span>
+								<br/>
+								<input name="txt_periodo" type="text" id="txt_periodo" tabindex="1" size="15" readonly="yes" />
+								<br/>
+							</td>
+						</tr>
+					</table>
+					<table width="560" border="0">
+						<tr>
+							<td width="553">
+								<br/>
+								<span class="style5">Professor: </span>
+								<br/>
+								<input name="txt_professor" type="text" id="txt_professor" tabindex="1" size="57" />
+								<br/>
+								<br/>
+								<span class="style5">Concluiu Pró Letramento de alfabetização e linguagem?</span>:
+								<br/>
+								<select name="cmb_letra" id="cmb_letra"></select>
+								<br/>
+								<br/>
+								<span class="style5">Quanto tempo tem na rede como professor?					  </span>
+							</td>
+						</tr>
+					</table>
+					<table width="560" border="0">
+						<tr>
+							<td width="98" scope="row">
+								1ºAno
+								<br/>
+								<select name="cmb_ano_rede" id="cmb_ano_rede">
+									<option>2000</option>
+								</select>
+							</td>
+							<td width="452" scope="row">
+								2ºMês
+								<br/>
+								<select name="cmb_mes_rede" id="cmb_mes_rede">
+									<option>00</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				<p></p>
+				</div>
+				<div class="style1" id="caixa1">
+					<p>&nbsp;</p>
+					<span class="style3">
+						<br/>
+						Levando em consideração os descritores apresentados na Provinha Brasil   (Apropriação do Sistema de Escrita e Leitura) e analisando os resultados da sua   classe: 
+					</span>
+					<br/>
+					<span class="style2">
+					<br/>
+					<span class="style1">Assinale os descritores que sua classe apresentou maior dificuldade:
+						<br/>
+						Dentre os descritores assinalados qual/quais você considera mais difícil de ser trabalhado em sua prática? Por quê? 
+					</span>
+				</div>
+				<div id="caixa2">
+					<table width="811" border="0">
+						<tr bgcolor="#E9F1FE">
+							<td width="545" height="96" valign="middle" class="style5">
+								<div id="caixa">
+									<h2>D1-</h2>
+									Reconhecer letras:
+								</div>
+							</td>
+							<td width="50" valign="middle">
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D1Q1" id="chk_D1Q1" onclick="checar('chk_D1Q','txt_D1')"/>
+									</div>
+								</label>
+							</td>
+							<td width="202" valign="middle">
+								<label>
+									<div align="center">
+										<textarea name="txt_D1" cols="20" readonly="yes" id="txt_D1" onkeydown="limite('txt_inter5',100)"></textarea>
+									</div>
+								</label>
+							</td>
+						</tr>
+						<tr bgcolor="#F7F7F7">
+							<td height="79" valign="middle" class="style5">
+								<div id="caixa">
+									<h2>D2-</h2>
+									Reconhecer sílabas:
+								</div>
+							</td>
+							<td valign="middle">
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D2Q1" id="chk_D2Q1" onclick="checar('chk_D2Q','txt_D2')"/>
+									</div>
+								</label>
+							</td>
+							<td valign="middle">
+								<div align="center">
+									<textarea name="txt_D2" cols="20" readonly="yes" id="txt_D2" onkeydown="limite('txt_inter5',299)"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#E9F1FE">
+							<td height="87">
+								<div id="caixa">
+									<h2>D3-</h2>
+									Estabelecer relações entre unidades sonoras e suas representações gráficas:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D3Q1" id="chk_D3Q1" onclick="checar('chk_D3Q','txt_D3')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D3" cols="20" readonly="yes" id="txt_D3" onkeydown="limite('txt_inter5',100)"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#F7F7F7">
+							<td height="92">
+								<div id="caixa">
+									<h2>D4-</h2>
+									Ler palavras:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D4Q1" id="chk_D4Q1" onclick="checar('chk_D4Q','txt_D4')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D4" cols="20" readonly="yes" id="txt_D4"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#E9F1FE">
+							<td height="89">
+								<div id="caixa">
+									<h2>D5-</h2>
+									Ler frases:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D5Q1" id="chk_D5Q1" onclick="checar('chk_D5Q','txt_D5')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D5" cols="20" readonly="yes" id="txt_D5" onkeydown="limite('txt_inter5',100)"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#F7F7F7">
+							<td height="91">
+								<div id="caixa">
+									<h2>D6-</h2>
+									Localizar informação explícita em texto:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D6Q1" id="chk_D6Q1" onclick="checar('chk_D6Q','txt_D6')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D6" cols="20" readonly="yes" id="txt_D6"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#E9F1FE">
+							<td height="86">
+								<div id="caixa">
+									<h2>D7-</h2>
+									Reconhecer assunto de um texto:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D7Q1" id="chk_D7Q1" onclick="checar('chk_D7Q','txt_D7')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D7" cols="20" readonly="yes" id="txt_D7" onkeydown="limite('txt_inter5',100)"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#F7F7F7">
+							<td height="91">
+								<div id="caixa">
+									<h2>D8-</h2>
+									Identificar a finalidade do texto:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D8Q1" id="chk_D8Q1" onclick="checar('chk_D8Q','txt_D8')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D8" cols="20" readonly="yes" id="txt_D8" onkeydown="limite('txt_inter5',100)"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#E9F1FE">
+							<td height="107">
+								<div id="caixa">
+									<h2>D9-</h2>
+									Estabelecer relação entre partes do texto:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D9Q1" id="chk_D9Q1" onclick="checar('chk_D9Q','txt_D9')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D9" cols="20" readonly="yes" id="txt_D9" onkeydown="limite('txt_inter5',100)"></textarea>
+								</div>
+							</td>
+						</tr>
+						<tr bgcolor="#F7F7F7">
+							<td height="88">
+								<div id="caixa">
+									<h2>D10-</h2>
+									Inferir informação:
+								</div>
+							</td>
+							<td>
+								<label>
+									<div align="center">
+										<input type="checkbox" name="chk_D10Q1" id="chk_D10Q1" onclick="checar('chk_D10Q','txt_D10')"/>
+									</div>
+								</label>
+							</td>
+							<td>
+								<div align="center">
+									<textarea name="txt_D10" cols="20" readonly="yes" id="txt_D10" onkeydown="limite('txt_inter5',100)"></textarea>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="caixa3">
+					<p>&nbsp;</p>
+					<p class="style3">
+						Baseando-se nesses Descritores, suas avaliações e os resultados da Provinha Brasil na sua classe, que intervenções pedagógicas você acredita que são importantes para que este grupo avance no processo de Alfabetização e Letramento, na continuidade do Ciclo? 
+						<br/>
+						<br/>
+					</p>
+					<br/>
+					<table width="810" border="0" bgcolor="#E9F1FE">
+						<tr>
+							<td height="37">                  </td>
+						</tr>
+						<tr>
+							<td width="54"></td>
+							<td width="295" height="106" scope="row">
+								<h2>1º</h2>
+								<textarea name="txt_inter1" id="txt_inter1" cols="40" rows="3" onkeydown="limite('txt_inter1',299)"></textarea>
+							</td>
+							<td width="58"></td>
+							<td width="385" scope="row">
+								<h2>2º</h2>
+								<textarea name="txt_inter2" id="txt_inter2" cols="40" rows="3" onkeydown="limite('txt_inter2',299)"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td height="113" scope="row">
+								<h2>3º</h2>
+								<textarea name="txt_inter3" id="txt_inter3" cols="40" rows="3" onkeydown="limite('txt_inter3',299)"></textarea>
+							</td>
+							<td></td>
+							<td scope="row">
+								<h2>4º</h2>
+								<textarea name="txt_inter4" id="txt_inter4" cols="40" rows="3" onkeydown="limite('txt_inter4',299)"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td height="104" scope="row">
+								<h2>5º</h2>
+								<textarea name="txt_inter5" id="txt_inter5" cols="40" rows="3" onkeydown="limite('txt_inter5',299)"></textarea>
+							</td>
+							<th scope="row">&nbsp;</th>
+						</tr>
+						<tr>
+							<td height="21">                     </td>
+						</tr>
+					</table>
+				</div>
+				<div id="caixa4">
+					<table width="843" border="0">
+						<tr>
+							<td>
+								<p></p>
+								<br/>
+								Outras observações:
+								<br/>
+								<textarea name="txt_obs" id="txt_obs" cols="40" rows="3" onkeydown="limite('txt_inter5',249)"></textarea>
+								<br/>
+								<br/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<p></p>
+				<p>
+					<input id="btn_salvar" class="button" type="button" value="Salvar" tabindex="5" onclick="Salvar();"/>&nbsp;&nbsp;<input id="btn_imprimir" class="button" type="button" value="Imprimir" tabindex="5" onclick="imprimir()"/>
+					<br/>
+				</p>
+			</div>
+			<div id="footer">
+				<div id="footer2">
+					<p>Prefeitura de Guarulhos - Secretaria de Educação</p>
+				</div>
+			</div>
+		</div>
+		<div style="text-align: center; font-size: 0.75em;"></div>
+	</body>
+</html>

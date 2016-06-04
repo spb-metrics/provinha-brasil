@@ -1,0 +1,143 @@
+<html>
+<body>
+
+<script type="text/javascript" src="js/objeto.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/graphs.js"></script>
+
+<label id="Mensagem"></label>
+
+<table width="700" border="0">
+	<tr>
+		<script language="JavaScript">
+    	
+    	  	document.getElementById('Mensagem').innerText = "Aguarde... Gerando Gráfico";
+    	
+    		var resp = chamar_ajax("php/filtros/defineVarGrafico.php", "filtro=2", false, "texto", null);
+    	
+    		var Tipo = resp.substr(0,1);
+    		var Ano = resp.substr(1,4);
+    		var Fase = resp.substr(5,1);
+    		var Serie = resp.substr(6,6);
+    		var Turma = resp.substr(12,6);
+    		
+    		graph = new BAR_GRAPH("hbar");
+			graph.barBorder = "1px solid #000000";
+			graph.labelSpace = 1;
+			graph.barLength = 3;
+			graph.barWidth = 18;
+			graph.showValues = 1;
+			graph.percValuesDecimals = 2;
+			
+			switch(Tipo){
+				case '3':
+				
+					document.write("<table border = 0>");
+					document.write("<tr><th COLSPAN=2>");
+					document.write("<H2>Gráfico Comparativo Escola/Turma<h2>");
+					document.write("</th></tr>");
+					document.write("<tr>");
+					document.write("<td>Ano: " + Ano + "</td>");
+					document.write("<td>Fase: " + Fase + "</td>");
+					
+					//graph.percValuesColor = "white";
+					graph.barColor = "images/h_bar_vermelho.jpg,images/h_bar_azul.jpg";
+					
+					graph.legend = "Escola,Turma";
+					
+					var xml = chamar_ajax("php/filtros/filtro_sql.php", "filtro=14", false, "xml", null);
+					var xml2 = chamar_ajax("php/filtros/filtro_sql.php", "filtro=15", false, "xml", null);
+					
+					document.write("<tr>");
+					document.write("<td>Série: " + valor_xml(xml2, 'SERIE', 0) + "</td>");
+					document.write("<td>Turma: " + valor_xml(xml2, 'TURMA', 0) + "</td>");
+					document.write("</table> <br>");
+					
+					//Gera Gráfico
+					var qtdRegistros = valor_xml(xml, 'nreg', 0)
+			
+					graph.values = valor_xml(xml, 'qtd', 0) + ";" +  valor_xml(xml2, 'qtd', 0);
+					
+					for(x = 1; x<=(qtdRegistros-1); x++)
+					{
+						graph.values = graph.values + "," + valor_xml(xml, 'qtd', x) + ";" +  valor_xml(xml2, 'qtd', x);
+					}
+					
+					graph.labels = valor_xml(xml, 'nivel', 0);
+					
+					for(x = 1; x<=(qtdRegistros-1); x++)
+					{
+						graph.labels = graph.labels + "," + valor_xml(xml, 'nivel', x);
+					}
+					
+					break;
+				
+				default:
+				
+					document.write("<table border = 0>");
+					document.write("<tr><th COLSPAN=2>");
+									
+					if (Tipo==1){
+						document.write("<h2>Gráfico de Níveis da Escola<h2>");
+						document.write("</th></tr>");
+						document.write("<tr>");
+						document.write("<td>Ano: " + Ano + "</td>");
+						document.write("<td>Fase: " + Fase + "</td>");
+						graph.barColor = "images/h_bar_azul.jpg";
+						var xml = chamar_ajax("php/filtros/filtro_sql.php", "filtro=14", false, "xml", null);
+					}else if(Tipo==2){
+						document.write("<h2>Gráfico de Níveis da Turma<h2>");
+						document.write("</th></tr>");
+						document.write("<tr>");
+						document.write("<td>Ano: " + Ano + "</td>");
+						document.write("<td>Fase: " + Fase + "</td>");
+						document.write("<tr>");
+						
+						graph.barColor = "images/h_bar_azul.jpg";
+						var xml = chamar_ajax("php/filtros/filtro_sql.php", "filtro=15", false, "xml", null);
+						
+						document.write("<td>Série: " + valor_xml(xml, 'SERIE', 1) + "</td>");
+						document.write("<td>Turma: " + valor_xml(xml, 'TURMA', 1) + "</td>");
+					}
+					
+					document.write("</table> <br>");
+					
+					//Gera Gráfico
+					var qtdRegistros = valor_xml(xml, 'nreg', 0)
+			
+					graph.values = valor_xml(xml, 'qtd', 0);
+					
+					for(x = 1; x<=(qtdRegistros-1); x++)
+					{
+						graph.values = graph.values + "," + valor_xml(xml, 'qtd', x);
+					}
+					
+					graph.labels = valor_xml(xml, 'nivel', 0);
+					
+					for(x = 1; x<=(qtdRegistros-1); x++)
+					{
+						graph.labels = graph.labels + ", " + valor_xml(xml, 'nivel', x);
+					}
+					
+					break;
+			}
+
+			document.getElementById('Mensagem').innerText = '';
+					
+			document.write(graph.create());
+		</script>
+	</tr>
+</table>
+<br>
+
+<input type="button" value="Imprimir" onclick="ImprimirGrafico()">
+
+<script language="JavaScript">
+    	function ImprimirGrafico()
+    	{
+    		window.print();
+    	}
+    	</script>
+
+</body>
+</html>

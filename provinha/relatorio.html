@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Provinha Brasil</title>
+		<script type="text/javascript" language="javascript" src="lytebox.js"></script>
+		<link rel="stylesheet" href="lytebox.css" type="text/css" media="screen" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="language" content="en" />
+		<script language="JavaScript1.2" type="text/javascript" src="js/ajax.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/objeto.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/select.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/tabela.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/testar.js"></script>
+		<script language="JavaScript1.2" type="text/javascript" src="js/consulta.js"></script>
+		<script language="JavaScript1.2" type="text/javascript"></script>
+		<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+		<style>
+			#cmb_aluno {
+			    width: 28em;
+			}
+		</style>
+	</head>
+	<body onload="iniciar1();">
+		<div id="main">
+			<div id="header">
+				<div id="logo"></div>
+				<div id="menu">
+					<ul>
+						<li><a href="inicial.html">Início</a></li>
+						<li><a href="grafico.html">Gerar Gráfico</a></li>
+						<li><a href="Relatorio_nivel.html">Relatório Nível</a></li>
+						<li><a href="Relatorio_classe.html">Relatório Classe </a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="middle">
+				<div id="sidebar">
+					<h3>MENU</h3>
+					<ul>
+						<li class="firstli">
+							<a href="Cadastro.html"><span class="style2">Cadastro</span></a>
+						</li>
+						<li>
+							<a href="Consulta.html">Consulta</a>
+						</li>
+						<li>
+							<a href="Relatorio_nivel.html">Relatório Nivel</a>
+						</li>
+						<li>
+							<a href="Relatorio_classe.html">Relatório Classe </a>
+						</li>
+						<li>
+							<a href="mudar_senha.html">Alterar Senha</a>
+						</li>
+						<li>
+							<a href="anexo.html">Anexo</a>
+						</li>
+						<li>
+							<a href="Ajuda.html">Ajuda</a>
+						</li>
+						<li>
+							<a href="login.html">Sair</a>
+						</li>
+					</ul>
+					<h3>&nbsp;</h3>
+				</div>
+				<div id="right">
+					<div class="post">
+						<div class="post_content">
+							<form id="form1" name="form1" method="post" action="">
+								<h3><span class="style2">Relatório</span>Classe</h3>
+								<p>&nbsp;</p>
+								<table width="560" border="0">
+									<tr>
+										<td width="183" height="73">
+											<span class="style5">Escola: </span>
+											<br/>
+											<input name="txt_escola" type="text" id="txt_escola" tabindex="1" size="57" readonly="yes" />
+										</td>
+									</tr>
+								</table>
+								<table width="560" border="0">
+									<tr>
+										<td width="70" height="52">
+											<span class="style5">Ano:</span>
+											<br/>
+											<select name="cmb_serie" id="cmb_serie" onchange="cmb_serie_onchange()"></select>
+										</td>
+										<td width="69">
+											<span class="style5">Turma: </span>
+											<br/>
+											<select name="cmb_turma" id="cmb_turma" onchange="cmb_turma_onchange()"></select>
+										</td>
+										<td width="407">
+											<span class="style5">Período: </span>
+											<br/>
+											<input name="txt_periodo" type="text" id="txt_periodo" tabindex="1" size="15" readonly="yes" />
+											<br/>
+										</td>
+									</tr>
+								</table>
+								<table width="560" border="0">
+									<tr>
+										<td width="553">
+											<br/>
+											<span class="style5">Professor: </span>
+											<br/>
+											<input name="txt_professor" type="text" id="txt_professor" tabindex="1" size="57" />
+											<br/>
+											<br/>
+											<span class="style5">Concluiu Pró Letramento de alfabetização e linguagem?</span>:
+											<br/>
+											<select name="cmd_letra" id="cmd_letra"></select>
+											<br/>
+											<br/>
+											<span class="style5">Quanto tempo tem na rede como professor?</span>
+											<br/>
+											<input name="txt_tempo_rede" type="text" id="txt_tempo_rede" tabindex="1" size="10" />
+											<br/>
+											<br/>
+										</td>
+									</tr>
+								</table>
+								<table width="560" border="0">
+									<tr>
+										<td width="98" scope="row">
+											1ºAno
+											<br/>
+											<select name="cmb_ano_rede" id="cmb_ano_rede">
+												<option>2000</option>
+											</select>
+										</td>
+										<td width="452" scope="row">
+											2ºMês
+											<br/>
+											<select name="cmb_mes_rede" id="cmb_mes_rede">
+												<option>00</option>
+											</select>
+										</td>
+									</tr>
+								</table>
+								<br/>
+								<h3>Relatório</h3>
+								<p>
+								<br/>
+								<table width="560" height="69" border="0">
+									<tr>
+										<th scope="row">Levando em consideração os descritores apresentados na Provinha Brasil (Apropriação do Sistema de Escrita e Leitura) e analisando os resultados da sua classe: </th>
+									</tr>
+								</table>
+								<br/>
+								<table width="560" border="0">
+									<tr>
+										<td height="32" bgcolor="#BBE3FB" scope="row">
+											<div align="center">
+												<strong>Assinale os descritores que sua classe apresentou maior dificuldade:</strong>
+											</div>
+										</td>
+									</tr>
+								</table>
+								<table width="560" border="0">
+									<tr>
+										<td width="512" height="33" scope="row">&nbsp;</td>
+										<td width="28" scope="row">&nbsp;</td>
+									</tr>
+									<tr>
+										<td bgcolor="#EEEEEE" scope="row">
+											<strong>D1</strong>: Reconhecer letras:
+										</td>
+										<th bgcolor="#EEEEEE" scope="row">
+											<div align="center">
+												<input name="chk_D2Q1" type="checkbox" id="chk_D2Q1" onclick="checar()"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td scope="row">
+											<strong>D2</strong>: Reconhecer sílabas:
+										</td>
+										<th scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D3Q1" id="chk_D3Q1" onclick="checar('chk_D3Q','txt_D3')"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td bgcolor="#EEEEEE" scope="row">
+											<strong>D3:</strong>
+											Estabelecer relações entre unidades sonoras e suas representações gráficas: 
+										</td>
+										<th bgcolor="#EEEEEE" scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D4Q1" id="chk_D4Q1" onclick="checar('chk_D4Q','txt_D4')"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td scope="row">
+											<strong>D4:</strong>
+											Ler palavras: 
+										</td>
+										<th scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D4Q2" id="chk_D4Q2" />
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td bgcolor="#EEEEEE" scope="row">
+											<strong>D5:</strong>
+											Ler frases: 
+										</td>
+										<th bgcolor="#EEEEEE" scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D5Q1" id="chk_D5Q1" onclick="checar('chk_D5Q','txt_D5')"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td scope="row">
+											<strong>D6:</strong>
+											Localizar informação explícita em texto: 
+										</td>
+										<th scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D6Q1" id="chk_D6Q1" onclick="checar('chk_D6Q','txt_D6')"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td bgcolor="#EEEEEE" scope="row">
+											<strong>D7:</strong>
+											Reconhecer assunto de um text:
+										</td>
+										<th bgcolor="#EEEEEE" scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D7Q1" id="chk_D7Q1" onclick="checar('chk_D7Q','txt_D7')"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td scope="row">
+											<strong>D8</strong>: Identificar a finalidade do texto: 
+										</td>
+										<th scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D8Q1" id="chk_D8Q1" onclick="checar('chk_D8Q','txt_D8')"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td bgcolor="#EEEEEE" scope="row">
+											<strong>D9:</strong>
+											Estabelecer relação entre partes do texto: 
+										</td>
+										<th bgcolor="#EEEEEE" scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D9Q1" id="chk_D9Q1" onclick="checar('chk_D9Q','txt_D9')"/>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td scope="row">
+											<strong>D10:</strong>
+											Inferir informação:
+										</td>
+										<th scope="row">
+											<div align="center">
+												<input type="checkbox" name="chk_D10Q1" id="chk_D10Q1" onclick="checar('chk_D10Q','txt_D10')"/>
+											</div>
+										</th>
+									</tr>
+								</table>
+								<br/>
+								<!-- iframe -->
+								<table width="560" border="0" id="texto"></table>
+								<!-- iframe -->
+								<p>&nbsp;</p>
+								<br/>
+								<table width="560" border="0">
+									<tr>
+										<td scope="row">Baseando-se nesses Descritores, suas avaliações e os resultados da Provinha Brasil na sua classe, que intervenções pedagógicas você acredita que são importantes para que este grupo avance no processo de Alfabetização e Letramento, na continuidade do Ciclo? </td>
+									</tr>
+								</table>
+								<br/>
+								<table width="560" border="0">
+									<tr>
+										<td width="292" scope="row">
+											<strong>1:</strong>
+											<br/>
+											<textarea name="txt_inter1" id="txt_inter1" cols="25" rows="3" onkeydown="limite('txt_inter1',299)"></textarea>
+										</td>
+										<td width="258" scope="row">
+											<strong>2:</strong>
+											<br/>
+											<textarea name="txt_inter2" id="txt_inter2" cols="25" rows="3" onkeydown="limite('txt_inter2',299)"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td scope="row">
+											<strong>3:</strong>
+											<br/>
+											<textarea name="txt_inter3" id="txt_inter3" cols="25" rows="3" onkeydown="limite('txt_inter3',299)"></textarea>
+										</td>
+										<td scope="row">
+											<strong>4:</strong>
+											<br/>
+											<textarea name="txt_inter4" id="txt_inter4" cols="25" rows="3" onkeydown="limite('txt_inter4',299)"></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td scope="row">
+											<strong>5:</strong>
+											<br/>
+											<textarea name="txt_inter5" id="txt_inter5" cols="25" rows="3" onkeydown="limite('txt_inter5',299)"></textarea>
+										</td>
+										<td scope="row">&nbsp;</td>
+									</tr>
+								</table>
+								<p>&nbsp;</p>
+								<br/>
+								<table width="560" border="0">
+									<tr>
+										<td scope="row">
+											Outras observações:
+											<br/>
+											<textarea name="txt_obs" id="txt_obs" cols="30" rows="3" onkeydown="limite('txt_inter5',249)"></textarea>
+										</td>
+									</tr>
+								</table>
+								<p>
+									<input id="btn_salvar" class="c" type="button" value="Salvar" tabindex="5" onclick="Salvar();"/><input id="btn_imprimir" class="button" type="button" value="Imprimir" tabindex="5" onclick="imprimir();"/>
+									<br/>
+								</p>
+							</form>
+						</div>
+					</div>
+					<div class="post"></div>
+				</div>
+			</div>
+			<div id="footer">
+				<div id="footer2">
+					<p>Prefeitura de Guarulhos - Secretaria de Educação</p>
+				</div>
+			</div>
+		</div>
+		<div style="text-align: center; font-size: 0.75em;"></div>
+	</body>
+</html>
